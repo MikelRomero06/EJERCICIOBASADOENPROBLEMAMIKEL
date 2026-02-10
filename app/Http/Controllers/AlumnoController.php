@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumno;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 
 class AlumnoController extends Controller
 {

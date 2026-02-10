@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\CarreraController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -17,6 +20,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
+Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
+Route::get('/carreras', [CarreraController::class, 'index'])->name('carreras.index');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
