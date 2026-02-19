@@ -195,4 +195,36 @@ const showingNavigationDropdown = ref(false);
             </main>
         </div>
     </div>
+
+    <v-card>
+        <v-layout>
+            <v-navigation-drawer
+                expand-on-hover
+                permanent
+                rail
+            >
+                <v-list>
+                    <v-list-item
+                        prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk_10ZKEImp5T3oMqy76ScxzjZ6ZGWKyoVZA&s"
+                        :subtitle=" $page.props.auth.user.email "
+                       v-bind:title="$page.props.auth.user.name"
+                    ></v-list-item>
+                </v-list>
+
+                <v-divider></v-divider>
+
+                <v-list density="compact" nav>
+                    <Link :href="route('alumnos.index')" class="text-decoration-none">
+                        <v-list-item prepend-icon="mdi-account-school" title="Estudiantes"></v-list-item>
+                    </Link>
+                    <v-list-item prepend-icon="mdi-human-male-board" title="Catedraticos" value="shared"></v-list-item>
+                    <v-list-item prepend-icon="mdi-clipboard" title="Cursos" value="starred"></v-list-item>
+                </v-list>
+            </v-navigation-drawer>
+
+            <v-main style="height: 250px"></v-main>
+        </v-layout>
+    </v-card>
 </template>
+
+

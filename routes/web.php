@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\CatedraticoController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -24,6 +25,7 @@ Route::get('/dashboard', function () {
 Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/carreras', [CarreraController::class, 'index'])->name('carreras.index');
+Route::get('/catedratico', [CatedraticoController::class, 'index'])->name('catedratico.index');
 
 
 Route::middleware('auth')->group(function () {
