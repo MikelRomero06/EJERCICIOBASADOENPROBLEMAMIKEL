@@ -23,9 +23,12 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <v-img
+                                        :width="50"
+                                        aspect-ratio="16/9"
+                                        cover
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJjo1LwVX8E3XhxKpHih5BLr1VAodnGv1u-g&s"
+                                    ></v-img>
                                 </Link>
                             </div>
 
@@ -33,12 +36,36 @@ const showingNavigationDropdown = ref(false);
                             <div
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
-                                <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Dashboard
-                                </NavLink>
+                                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                    <NavLink
+                                        :href="route('dashboard')"
+                                        :active="route().current('dashboard')"
+                                    >
+                                        <v-list-item prepend-icon="mdi-domain" title="Dashboard" value=""></v-list-item>
+                                    </NavLink>
+
+                                    <NavLink
+                                        :href="route('alumnos.index')"
+                                        :active="route().current('alumnos.*')"
+                                    >
+                                        <v-list-item prepend-icon="mdi-account-edit" title="Alumnos" value=""></v-list-item>
+                                    </NavLink>
+
+                                    <NavLink
+                                        :href="route('catedratico.index')"
+                                        :active="route().current('catedratico.*')"
+                                    >
+
+                                        <v-list-item prepend-icon="mdi-human-male-board" title="Catedráticos" value=""></v-list-item>
+                                    </NavLink>
+
+                                    <NavLink
+                                        :href="route('cursos.index')"
+                                        :active="route().current('cursos.*')"
+                                    >
+                                        <v-list-item prepend-icon="mdi-book-variant" title="Cursos" value=""></v-list-item>
+                                    </NavLink>
+                                </div>
                             </div>
                         </div>
 
@@ -197,32 +224,30 @@ const showingNavigationDropdown = ref(false);
     </div>
 
     <v-card>
+
         <v-layout>
+
             <v-navigation-drawer
                 expand-on-hover
                 permanent
                 rail
             >
+
                 <v-list>
+
                     <v-list-item
                         prepend-avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk_10ZKEImp5T3oMqy76ScxzjZ6ZGWKyoVZA&s"
+
                         :subtitle=" $page.props.auth.user.email "
-                       v-bind:title="$page.props.auth.user.name"
+
+                        v-bind:title="$page.props.auth.user.name"
                     ></v-list-item>
                 </v-list>
 
                 <v-divider></v-divider>
-
-                <v-list density="compact" nav>
-                    <Link :href="route('alumnos.index')" class="text-decoration-none">
-                        <v-list-item prepend-icon="mdi-account-school" title="Estudiantes"></v-list-item>
-                    </Link>
-                    <v-list-item prepend-icon="mdi-human-male-board" title="Catedraticos" value="shared"></v-list-item>
-                    <v-list-item prepend-icon="mdi-clipboard" title="Cursos" value="starred"></v-list-item>
-                </v-list>
             </v-navigation-drawer>
 
-            <v-main style="height: 250px"></v-main>
+            <v-main style="height: 150px" ></v-main>
         </v-layout>
     </v-card>
 </template>
